@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import FormVagas from '../../components/FormVagas'
+import FormSearch from '../../components/JobForm'
 
-import Vaga from '../../components/Vaga'
+import Job from '../../components/Job'
 
-import styles from './ListaVagas.module.css'
+import { JobsList } from './styles'
 
-type Vaga = {
+type Job = {
   id: string
   titulo: string
   localizacao: string
@@ -98,10 +98,10 @@ const ListaVagas = () => {
 
   return (
     <div>
-      <FormVagas aoPesquisar={(termo: string) => setFiltro(termo)} />
-      <ul className={styles.vagas}>
+      <FormSearch aoPesquisar={(termo: string) => setFiltro(termo)} />
+      <JobsList>
         {vagasFiltradas.map((vag) => (
-          <Vaga
+          <Job
             key={vag.id}
             titulo={vag.titulo}
             localizacao={vag.localizacao}
@@ -112,7 +112,7 @@ const ListaVagas = () => {
             requisitos={vag.requisitos}
           />
         ))}
-      </ul>
+      </JobsList>
     </div>
   )
 }

@@ -1,18 +1,23 @@
-import Header from './components/Cabecalho'
-import Hero from './components/Hero'
-import ListaVagas from './containers/ListaVagas'
+import { ThemeProvider } from 'styled-components'
 
-import './global.css'
+import GlobalStyle, { Container } from './global'
+
+import Header from './components/Header'
+import Hero from './components/Hero'
+import JobsSection from './containers/JobsSection'
+
+import LightTheme from './themes/light'
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={LightTheme}>
+      <GlobalStyle />
       <Header />
       <Hero />
-      <div className="container">
-        <ListaVagas />
-      </div>
-    </>
+      <Container>
+        <JobsSection />
+      </Container>
+    </ThemeProvider>
   )
 }
 
